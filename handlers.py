@@ -3,7 +3,7 @@ from telegram.ext import ContextTypes
 from context_manager import ContextManager
 from openai_client import get_chatgpt_response
 
-context_mgr = ContextManager
+context_mgr = ContextManager ()
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -11,7 +11,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context_mgr.clear_context(user_id)
 
     keyboard = [[InlineKeyboardButton("🔄 New Request", callback_data="new_request")]]
-    replay_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
         "Hello! I'm bot with ChatGPT integration.\n\n "
@@ -27,7 +27,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "ℹ️ <b>How using:</b>\n\n"
         "1. Write me any question\n"
-        "2. I will respond using ChatGPT\n"
+        "2. I will respond using AI\n"
         "3. I remember the context conversation.\n\n"
         "<b>Commands:</b>\n"
         "/start - Delete history and start again\n"
