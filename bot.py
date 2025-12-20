@@ -3,6 +3,7 @@ from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQu
 from config import TELEGRAM_TOKEN
 from handlers import start_command, help_command, handle_message, new_request_callback
 
+# Logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -10,8 +11,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def main():
+    """Launching the bot"""
+
+    # Create app
     app = Application.builder().token(TELEGRAM_TOKEN).build()
 
+    # Registering handlers
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CallbackQueryHandler(new_request_callback, pattern="new_request"))

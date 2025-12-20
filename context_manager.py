@@ -1,6 +1,8 @@
 from collections import defaultdict
 
 class ContextManager:
+    """Managing user dialog history"""
+
     def __init__(self):
         self.contexts = defaultdict(list)
 

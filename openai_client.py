@@ -7,6 +7,15 @@ client = AsyncOpenAI(
 )
 
 async def get_chatgpt_response(messages: list) -> str:
+    """
+    Get a response from AI
+
+    Args:
+        messages: Dialog history in format AI
+
+    Return: Response from AI
+
+    """
     try:
         response = await client.chat.completions.create(
             model="mistralai/devstral-2512:free",
